@@ -1,3 +1,31 @@
-{% for result in results %}
-    <p>{{ result }}</p>
-{% endfor %}
+{% extends "base.html" %}
+{% block content %}
+<h1>Messages</h1>
+<a href="{{ url_for('index') }}" class="home-button">Home</a>
+<table class="table-auto w-full max-w-md mx-auto">
+  <thead>
+    <tr>
+      <th class="px-4 py-2">Name</th>
+      <th class="px-4 py-2">Email</th>
+      <th class="px-4 py-2">Message</th>
+      <th class="px-4 py-2">Time Sent</th>
+      <th class="px-4 py-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for message in results %}
+    <tr>
+      <td class="border px-4 py-2">{{ message.name }}</td>
+      <td class="border px-4 py-2">{{ message.email }}</td>
+      <td class="border px-4 py-2">{{ message.message }}</td>
+      <td class="border px-4 py-2">{{ message.time_sent }}</td>
+      <td class="border px-4 py-2">
+        <form action="{{ url_for('delete_message', message_id=message.id) }}" method="POST">
+          <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

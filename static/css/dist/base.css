@@ -613,6 +613,11 @@ video {
   margin-right: auto;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -641,12 +646,20 @@ video {
   display: flex;
 }
 
+.table {
+  display: table;
+}
+
 .h-6 {
   height: 1.5rem;
 }
 
 .h-screen {
   height: 100vh;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-6 {
@@ -665,8 +678,20 @@ video {
   max-width: 24rem;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
+.table-auto {
+  table-layout: auto;
+}
+
 .cursor-pointer {
   cursor: pointer;
+}
+
+.resize {
+  resize: both;
 }
 
 .appearance-none {
@@ -689,12 +714,6 @@ video {
 
 .justify-between {
   justify-content: space-between;
-}
-
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .rounded {
@@ -786,9 +805,19 @@ video {
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -882,7 +911,7 @@ body {
 }
 
 .forward-button:hover {
-  background-color: #0056b3;
+  color: rgb(96 165 250);
 }
 
 .back-button {
@@ -901,7 +930,28 @@ body {
 }
 
 .back-button:hover {
-  background-color: #0056b3;
+  color: rgb(96 165 250);
+}
+
+.home-button {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  /* Center the button */
+  transform: translateX(-50%);
+  /* Ensure it's centered regardless of its width */
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 24px;
+  text-decoration: none;
+  color: #fff;
+  background-color: transparent;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+  color: rgb(96 165 250);
 }
 
 .hover\:bg-slate-800:hover {
@@ -909,19 +959,9 @@ body {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
 
-.hover\:text-blue-300:hover {
-  --tw-text-opacity: 1;
-  color: rgb(147 197 253 / var(--tw-text-opacity));
-}
-
 .hover\:text-blue-400:hover {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
-}
-
-.hover\:text-gray-400:hover {
-  --tw-text-opacity: 1;
-  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .hover\:text-green-600:hover {
