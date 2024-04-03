@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{{ url_for('blog') }}" class="back-button"><</a>
+<a href="{{ url_for('index') }}" class="forward-button">></a>
+<h1>Contact Me</h1>
+
+{% if error %}
+<div id="notification" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 max-w-md mx-auto rounded relative" role="alert">
+  <p class="font-bold">Error</p>
+  <p>{{ error }}</p>
+  <button onclick="document.getElementById('notification').style.display='none'" class="absolute top-0 right-0 mt-4 mr-4 text-red-500 hover:text-red-600 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+{% endif %}
+
+{% if message_sent %}
+<div id="notification" class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 max-w-md mx-auto rounded relative" role="alert">
+  <p class="font-bold">Success</p>
+  <p>Your message has been sent.</p>
+  <button onclick="document.getElementById('notification').style.display='none'" class="absolute top-0 right-0 mt-4 mr-4 text-green-500 hover:text-green-600 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
+{% endif %}
+<form class="w-full max-w-sm mx-auto" method="POST" action="{{ url_for('contact') }}">
+  <div class="mb-6">
+    <label for="name" class="text-gray-400 text-sm font-bold mb-2 block">Your Name</label>
+    <input type="text" id="name" name="name" class="bg-slate-600 shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline border-gray-600">
+  </div>
+  <div class="mb-6">
+    <label for="email" class="text-gray-400 text-sm font-bold mb-2 block">Your Email</label>
+    <input type="email" id="email" name="email" class="bg-slate-600 shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline border-gray-600">
+  </div>
+  <div class="mb-6">
+    <label for="message" class="text-gray-400 text-sm font-bold mb-2 block">Your Message</label>
+    <textarea id="message" name="message" class="bg-slate-600 shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline border-gray-600"></textarea>
+  </div>
+  <div class="flex items-center justify-between">
+    <button type="submit" class="bg-slate-600 hover:bg-slate-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Send Message</button>
+  </div>
+</form>
+{% endblock %}

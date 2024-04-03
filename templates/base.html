@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/dist/base.css')}}">
+  
+</head>
+<body class="font-custom bg-custom-dark text-custom-light">
+
+  <!-- <header class="bg-gray-800 text-white">
+    <nav class="container mx-auto px-4 py-2 flex justify-between items-center">
+      <a href="#" class="text-xl font-bold">Tom Moldon</a>
+      <ul class="flex space-x-4">
+        <li><a href="{{ url_for('index') }}" class="hover:text-blue-400">Home</a></li>
+        <li><a href="#" class="hover:text-gray-400">About</a></li>
+        <li><a href="{{ url_for('blog') }}" class="hover:text-gray-400">Blog</a></li>
+        <li><a href="{{ url_for('contact') }}" class="hover:text-gray-400">Contact</a></li>
+      </ul>
+    </nav>
+  </header> -->
+
+  <main class="container mx-auto py-10">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="bg-gray-800 text-white text-center py-4">
+    &copy; 2024 Tom Moldon
+  </footer>
+
+  </body>
+</html>
