@@ -1,153 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{% block title %}{% endblock %}</title>
   <link rel="stylesheet" href="{{url_for('static', filename='css/dist/base.css')}}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/particle.css') }}">
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </head>
+
 <body class="font-custom bg-custom-dark text-custom-light flex flex-col min-h-screen">
-  <style>
-    .content-with-particles {
-      position: relative;
-      min-height: calc(100vh - 60px);  /* Adjust based on the height of your footer */
-    }
-  </style>
-<div class="content-with-paticles flex-grow">
-<div id="particles-js"></div>
-  <script>
-    particlesJS('particles-js',
-    {
-      "particles": {
-        "number": {
-          "value": 96,
-          "density": {
-            "enable": true,
-            "value_area": 800
-          }
-        },
-        "color": {
-          "value": "#2e3039"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000"
-          },
-          "polygon": {
-            "nb_sides": 12
-          },
-          "image": {
-            "src": "img/github.svg",
-            "width": 100,
-            "height": 100
-          }
-        },
-        "opacity": {
-          "value": 0.36878366528873857,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 12.02555430289365,
-          "random": false,
-          "anim": {
-            "enable": true,
-            "speed": 10,
-            "size_min": 40,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": false,
-          "distance": 200,
-          "color": "#ffffff",
-          "opacity": 1,
-          "width": 2
-        },
-        "move": {
-          "enable": true,
-          "speed": 8,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "out",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-      "interactivity": {
-        "detect_on": "canvas",
-        "events": {
-          "onhover": {
-            "enable": false,
-            "mode": "repulse"
-          },
-          "onclick": {
-            "enable": false,
-            "mode": "remove"
-          },
-          "resize": true
-        },
-        "modes": {
-          "grab": {
-            "distance": 400,
-            "line_linked": {
-              "opacity": 1
-            }
-          },
-          "bubble": {
-            "distance": 400,
-            "size": 40,
-            "duration": 2,
-            "opacity": 8,
-            "speed": 3
-          },
-          "repulse": {
-            "distance": 200,
-            "duration": 0.4
-          },
-          "push": {
-            "particles_nb": 4
-          },
-          "remove": {
-            "particles_nb": 2
-          }
-        }
-      },
-      "retina_detect": true
-    }
-    
-    );
-    </script>
-    <style>
-      #particles-js {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-      }
-      </style>
-    
 
-  <main class="container mx-auto py-10">
-    {% block content %}{% endblock %}
-  </main>
-</div> 
+  <div class="content-with-paticles flex-grow">
+    <div id="particles-js"></div>
+
+
+    <main class="container mx-auto py-10">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
   <footer class="bg-gray-800 text-white text-center py-4">
-    &copy; 2024 Tom Moldon | <a class="hover:text-blue-400"href="{{ url_for('login') }}">Admin</a>
+    &copy; 2024 Tom Moldon | <a class="hover:text-blue-400" href="{{ url_for('login') }}">Admin</a>
   </footer>
+  <script src="{{ url_for('static', filename='js/particle.js') }}"></script>
+</body>
 
-  </body>
 </html>

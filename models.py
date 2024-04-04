@@ -2,6 +2,30 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from extensions import db
 
+blogpost_tabs = db.Table('blogpost_tags',
+                         db.Column('tag_id', db.Integer, db.ForeignKey(
+                             'tags.id'), primary_key=True),
+                         db.Column('blogpost_id', db.Integer, db.ForeignKey(
+                             'blogposts.id'), primary_key=True))
+
+
+class Tag(db.Model):
+    """
+    Represents a tag that can be associated with a blog post.
+
+    Attributes:
+        id (int): The unique identifier of the tag.
+        name (str): The name of the tag.
+    """
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(80), nullable=False)
+
+    def __repr__(self):
+        return f'<Tag: {self.name}>'
+
 
 class BlogPost(db.Model):
     """
@@ -18,6 +42,8 @@ class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     body = db.Column(db.Text, nullable=False)
+    tags = db.relationship('Tag', secondary='blogpost_tags',
+                           backref=db.backref('blogposts', lazy=True))
 
     def __repr__(self):
         return f'<BlogPost: {self.title}>'
@@ -59,16 +85,17 @@ class Message(db.Model):
             'message': self.message,
             'time_sent': self.time_sent.strftime('%d-%m-%Y %H:%M:%S')
         }
-    
+
+
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     password = db.Column(db.String(128), nullable=False)
 
     def set_password(self, password: str) -> None:
         self.password = generate_password_hash(password)
-    
+
     def check_password(self, password: str) -> bool:
         return check_password_hash(self.password, password)
-    
+
     def __repr__(self) -> str:
         return f'User({self.id})'

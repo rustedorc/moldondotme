@@ -8,7 +8,7 @@ Author: Tom
 """
 
 from flask import Flask, render_template, abort, request, redirect, url_for
-from flask_login import login_required, login_user
+from flask_login import login_required, login_user, logout_user
 from extensions import db, login_manager
 from models import BlogPost, Message, User
 
@@ -21,7 +21,7 @@ app.config['SECRET_KEY'] = 'secret_key'
 db.init_app(app)
 login_manager.init_app(app)
 login_manager.login_view = "login"
-login_manager.session_protection = "basic"
+# login_manager.session_protection = "strong"
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -44,6 +44,7 @@ def index():
   Returns:
     The rendered index.html template.
   """
+  print('Hello')
   return render_template('index.html')
 
 
@@ -105,6 +106,17 @@ def login():
       login_user(user)
       return redirect(url_for('view_messages'))
   return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+  """
+  Logs out the current user.
+
+  Returns:
+    A redirect to the index route.
+  """
+  logout_user()
+  return redirect(url_for('index'))
 
 @app.route('/messages')
 @login_required

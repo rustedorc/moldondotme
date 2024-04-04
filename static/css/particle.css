@@ -1,0 +1,11 @@
+.content-with-particles {
+    position: relative;
+    min-height: calc(100vh - 60px);  /* Adjust based on the height of your footer */
+  }
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
