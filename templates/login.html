@@ -2,9 +2,9 @@
 {% block title %}Portfolio - Tom{% endblock %}
 
 {% block content %}
-<a href="{{ url_for('logout') }}" class="home-button">Home</a>
+<a href="{{ url_for('admin.logout') }}" class="home-button">Home</a>
 <div class="flex items-center justify-center h-screen" , style="margin-top: -40px;">
-    <form method="post" action="{{ url_for('login') }}">
+    <form method="post" action="{{ url_for('admin.login') }}">
         <input type="password" name="password" placeholder=""
             class="bg-slate-600 shadow appearance-none border rounded w-full py-2 px-3 text-white text-2xl leading-tight focus:outline-none focus:shadow-outline border-gray-600">
         <input type="submit" value="Login" class="block mx-auto my-2 text-lg hover:text-blue-400">
